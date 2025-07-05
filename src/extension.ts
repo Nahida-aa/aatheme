@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const workBenchFilename = vscode.version == "1.94.0" ? "workbench.esm.html" : "workbench.html";
 
 		const htmlFile = path.join(base, electronBase, "workbench", workBenchFilename);
-		const templateFile = path.join(base, electronBase, "workbench", "neondreams.js");
+		const templateFile = path.join(base, electronBase, "workbench", "glowdreams.js");
 
 		try {
 			// const version = context.globalState.get(`${context.extensionName}.version`);
@@ -52,14 +52,14 @@ export function activate(context: vscode.ExtensionContext) {
 			// modify workbench html
 			const html = fs.readFileSync(htmlFile, "utf-8");
 			// check if the tag is already there
-			const isEnabled = html.includes("neondreams.js");
-			// vscode.window.showInformationMessage("准备检查是否没有 neondreams.js");
+			const isEnabled = html.includes("glowdreams.js");
+			// vscode.window.showInformationMessage("准备检查是否没有 glowdreams.js");
 			if (!isEnabled) {
 				vscode.window.showInformationMessage("当前没有启用 Neon Dreams，正在启用中..., 可以进入下一步");
 				// delete 现有的 script tag if there
-				let output = html.replace(/^.*(<!-- AaTheme --><script src="neondreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
+				let output = html.replace(/^.*(<!-- AaTheme --><script src="glowdreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
 				// add new script tag
-				output = html.replace(/\<\/html\>/g, `	<!-- AaTheme --><script src="neondreams.js"></script><!-- NEON DREAMS -->\n`);
+				output = html.replace(/\<\/html\>/g, `	<!-- AaTheme --><script src="glowdreams.js"></script><!-- NEON DREAMS -->\n`);
 				output += '</html>';
 	
 				fs.writeFileSync(htmlFile, output, "utf-8");
@@ -109,11 +109,11 @@ function uninstall() {
 	const html = fs.readFileSync(htmlFile, "utf-8");
 
 	// check if the tag is already there
-	const isEnabled = html.includes("neondreams.js");
+	const isEnabled = html.includes("glowdreams.js");
 
 	if (isEnabled) {
 		// delete synthwave script tag if there
-		let output = html.replace(/^.*(<!-- AaTheme --><script src="neondreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
+		let output = html.replace(/^.*(<!-- AaTheme --><script src="glowdreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
 		fs.writeFileSync(htmlFile, output, "utf-8");
 
 		vscode.window

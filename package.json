@@ -1,0 +1,75 @@
+{
+  "name": "aatheme",
+  "displayName": "AaTheme",
+  "description": "a glow theme",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nahida-aa/aatheme.git"
+  },
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "activationEvents": [
+		"onCommand:aatheme.enableNeon",
+		"onCommand:aatheme.disableNeon"
+	],
+  "main": "./out/extension.js",
+  "contributes": {
+    "themes": [
+      {
+        "label": "AaTheme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/AaTheme-color-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "aatheme.enableGlow",
+        "title": "AaTheme: Enable Glow Dreams"
+      },
+      {
+        "command": "aatheme.disableGlow",
+				"title": "AaTheme: Disable Glow Dreams"
+			}
+    ],
+    "configuration": {
+			"title": "AaTheme",
+			"properties": {
+				"aatheme.brightness": {
+					"type": "number",
+					"default": 0.45,
+					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
+				},
+				"aatheme.disableGlow": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disable the glow effect, but show Synthwave '84 editor chrome updates"
+				}
+			}
+		}
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./ && cp -r src/custom out/",
+    "watch": "cp -r src/custom out/ && tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

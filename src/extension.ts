@@ -8,6 +8,7 @@ import * as fs from 'fs';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration("aatheme");
+	vscode.window.showInformationMessage(JSON.stringify(config));
 	let disableGlow = config && config.disableGlow ? !!config.disableGlow : false;
 	let brightness = parseFloat(config.brightness) > 1 ? 1 : parseFloat(config.brightness);
 	brightness = brightness < 0 ? 0 : brightness;

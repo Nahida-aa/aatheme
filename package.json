@@ -2,7 +2,7 @@
   "name": "aatheme",
   "displayName": "AaTheme",
   "description": "a glow theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Nahida-aa",
   "license": "MIT",
   "repository": {
@@ -16,9 +16,9 @@
     "Themes"
   ],
   "activationEvents": [
-		"onCommand:aatheme.enableNeon",
-		"onCommand:aatheme.disableNeon"
-	],
+    "onCommand:aatheme.enableNeon",
+    "onCommand:aatheme.disableNeon"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "themes": [
@@ -35,24 +35,24 @@
       },
       {
         "command": "aatheme.disableGlow",
-				"title": "AaTheme: Disable Glow Dreams"
-			}
+        "title": "AaTheme: Disable Glow Dreams"
+      }
     ],
     "configuration": {
-			"title": "AaTheme",
-			"properties": {
-				"aatheme.brightness": {
-					"type": "number",
-					"default": 0.45,
-					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
-				},
-				"aatheme.disableGlow": {
-					"type": "boolean",
-					"default": false,
-					"description": "Disable the glow effect, but keep AaTheme editor chrome updates"
-				}
-			}
-		}
+      "title": "AaTheme",
+      "properties": {
+        "aatheme.brightness": {
+          "type": "number",
+          "default": 0.45,
+          "description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
+        },
+        "aatheme.disableGlow": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable the glow effect, but keep AaTheme editor chrome updates"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",

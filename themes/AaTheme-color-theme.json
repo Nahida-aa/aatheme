@@ -60,6 +60,7 @@
     "tab.inactiveBackground": "#262335",
     "editor.background": "#262335",
     "editorLineNumber.foreground": "#ffffff73",
+
     "editorLineNumber.activeForeground": "#ffffffcc",
     "editorCursor.background": "#241b2f",
     "editorCursor.foreground": "#2af998",
@@ -73,7 +74,6 @@
     "editor.hoverHighlightBackground": "#463564d2",
     "editor.lineHighlightBorder": "#7059AB66",
     "editor.rangeHighlightBackground": "#49549539",
-		
     "editorIndentGuide.background1": "#444251",
     "editorIndentGuide.activeBackground1": "#A148AB80",
     "editorRuler.foreground": "#A148AB80",
@@ -87,7 +87,6 @@
     "editorOverviewRuler.deletedForeground": "#fe445099",
     "editorOverviewRuler.errorForeground": "#fe4450dd",
     "editorOverviewRuler.warningForeground": "#72f1b8cc",
-
 		//拼写提示波浪线
     "editorInfo.foreground": "#72f1b8cc",
     //警告提示波浪线
@@ -97,13 +96,14 @@
     "editorGutter.modifiedBackground": "#b893ce8f",
     "editorGutter.addedBackground": "#206d4bd6",
     "editorGutter.deletedBackground": "#fa2e46a4",
-    "diffEditor.insertedTextBackground": "#0beb9935",
-    "diffEditor.removedTextBackground": "#fe445035",
     "editorWidget.background": "#171520DC",
     "editorWidget.border": "#ffffff22",
     "editorWidget.resizeBorder": "#ffffff44",
     "editorSuggestWidget.highlightForeground": "#f97e72",
     "editorSuggestWidget.selectedBackground": "#ffffff36",
+		
+    "diffEditor.insertedTextBackground": "#0beb9935",
+    "diffEditor.removedTextBackground": "#fe445035",
     "peekView.border": "#495495",
     "peekViewEditor.background": "#232530",
     "peekViewEditor.matchHighlightBackground": "#D18616bb",
@@ -210,6 +210,8 @@
 				"meta.bracket.square.access", // T data_[N];
 				"meta.parens", // for (size_t i = 0; i < N; ++i)
 				"meta.body.function.definition.cpp", // constexpr size_t capacity() const noexcept { return N; }
+				"variable.other.metavariable", // 元变量{rust}
+				"variable.other", // 元变量{rust}
 			],
 			"settings": {
 				"foreground": "#f1c9e5"
@@ -249,6 +251,7 @@
 			"scope": [
 				// "keyword",
 				"keyword.control",
+				"keyword.operator",
 				"storage.type",
 				"keyword.other.unit", // 单位关键字 px, em, rem, %, pt, in, cm, mm, ex, ch, vh, vw
 				"storage.modifier",
@@ -281,7 +284,7 @@
 			}
 		},
 		{
-			"name": "Punctuation", // Operator, Misc
+			"name": "Punctuation, text, 原始", // Operator, Misc
 			"scope": [
 				// "constant.other.color", // #FF0000; rgb(255, 0, 0); red
 				"punctuation", // { }; :; ( ); [];
@@ -300,15 +303,16 @@
 				// "punctuation.section.embedded", // <?php echo "Hello"; ?> <? ?>  
 				// "keyword.other.template", // ${ }
 				// "keyword.other.substitution" // ${ }
+				// "source.python",
 			],
 			"settings": {
-				"foreground": "#ffffff"
+				"foreground": "#fdfdfd"
 			}
 		},
 		{
 			"name": "Function, Special Method",
 			"scope": [
-				// "entity.name.function", // 函数名定义
+				"source.rust entity.name.function", // 实体函数名
 				"meta.definition.function", // 函数名定义
 				"keyword.other.operator.overload.cpp", // 函数名定义
 				"meta.head.function.definition.special.operator-overload.cpp", // 函数名定义
@@ -322,39 +326,19 @@
 				"foreground": "#80f7f5"
 			}
 		},
-
 		{
-				"name": "React Components (const declared)",
-				"scope": [
-										"meta.var.expr.js variable.other.readwrite.js",
-					"meta.var.expr.ts variable.other.readwrite.ts",
-					// "meta.var.expr.tsx variable.other.readwrite.tsx",
-					"variable.other.constant.js",
-					"variable.other.constant.ts",
-					// "variable.other.constant.tsx"
-										"meta.arrow.js",
-					"meta.arrow.ts", 
-					// "meta.arrow.tsx",
-						"source.js meta.var.expr variable.other.readwrite.js",
-						"source.ts meta.var.expr variable.other.readwrite.ts",
-						// "source.tsx meta.var.expr variable.other.readwrite.tsx"
-				],
-				"settings": {
-						"foreground": "#36f9f6"
-				}
-		},
-
-		{
-			"name": "Class, Support, Tag",
+			"name": "Class, Tag",
 			"scope": [
 				// "meta.body.class",
 				"entity.name.tag", // htmlTag 名
 				"entity.name.type", // 命名实体: 类名
 				// "entity.name.type.class",
+				"entity.name.type.numeric.rust",
 				"storage.type.enum.c",
 				"storage.type.struct",
 				"storage.type.built-in",
 				"storage.type.union",
+				"entity.name.type.primitive", // 基本类型: int, float, double, char, bool, void{rust}
 				// "meta.class",
 				"support.type", // Entity Types
 				"support.class",
@@ -402,9 +386,16 @@
 		{ 
 				"name": "module",
 				"scope": [
-					"module",
+					// "module",
 					"entity.name.type.module",
-					"entity.name.namespace",
+					// "source.python entity.name.namespace",
+					// "entity.name.namespace",
+					"meta.use entity.name.namespace",
+					"meta.function.definition entity.name.namespace",
+					"meta.function.call entity.name.namespace",
+					// "meta.module",
+					// "entity.name.namespace.python, meta.import.python entity.name.namespace",
+					// "variable.other.module",
 					"variable.other.readwrite.alias",
 			],
 				"settings": {
@@ -895,5 +886,19 @@
 				"foreground": "#EEFFFF"
 			}
 		}
-	]
+	],
+	"semanticTokenColors": {
+    "module:python": "#f3a0a5",
+		"namespace.attribute:rust": "#ebe5cd",
+    // "class:python": "#FFCB6B",
+    // "function:python": "#82AAFF",
+    // "method:python": "#82AAFF",
+    // "variable:python": "#EEFFFF",
+    // "parameter:python": "#F78C6C",
+    // "string:python": "#C3E88D",
+    // "number:python": "#F78C6C",
+    // "keyword:python": "#C792EA",
+    // "operator:python": "#89DDFF",
+    // "comment:python": "#546E7A"
+  }
 }

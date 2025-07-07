@@ -15,6 +15,11 @@ A beautiful glow theme for Visual Studio Code that adds neon-style highlighting 
 2. Select the theme: `Ctrl+Shift+P` → `Preferences: Color Theme` → `AaTheme`
 3. Enable glow effects: `Ctrl+Shift+P` → `AaTheme: Enable Glow Dreams`
 
+## Documentation
+
+- **[Theme Guide](./THEME_GUIDE.md)** - Comprehensive guide to color classifications, supported languages, and customization options
+- **[Contributing Guidelines](./THEME_GUIDE.md#贡献指南)** - How to contribute to the theme development
+
 ## Commands
 
 - `AaTheme: Enable Glow Dreams` - Enables the glow effect

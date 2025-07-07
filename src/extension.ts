@@ -8,7 +8,7 @@ import * as fs from 'fs';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration("aatheme");
-	vscode.window.showInformationMessage(JSON.stringify(config));
+	// vscode.window.showInformationMessage(JSON.stringify(config));
 	let disableGlow = config && config.disableGlow ? !!config.disableGlow : false;
 	let brightness = parseFloat(config.brightness) > 1 ? 1 : parseFloat(config.brightness);
 	brightness = brightness < 0 ? 0 : brightness;
@@ -56,7 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
 			const isEnabled = html.includes("glowdreams.js");
 			// vscode.window.showInformationMessage("准备检查是否没有 glowdreams.js");
 			if (!isEnabled) {
-				vscode.window.showInformationMessage("当前没有启用 Neon Dreams，正在启用中..., 可以进入下一步");
+				// vscode.window.showInformationMessage("当前没有启用 Neon Dreams，正在启用中..., 可以进入下一步");
 				// delete 现有的 script tag if there
 				let output = html.replace(/^.*(<!-- AaTheme --><script src="glowdreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
 				// add new script tag

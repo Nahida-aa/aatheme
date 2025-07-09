@@ -378,7 +378,7 @@
 				"support.function", // 内置/支持函数 
 				"keyword.other.special-method", // 特殊方法关键字 def __init__(self):        // __init__ 是 keyword.other.special-method
 				"support.class.component",
-				"meta.function",
+				// "meta.function", // 会匹配到 react 函数组件中的 文字 等等
 				"entity.name.function.macro", // 宏函数名
 				// md: Link Title
 				"string.other.link.title.markdown", // Markdown 链接标题

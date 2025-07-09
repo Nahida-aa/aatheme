@@ -2,7 +2,7 @@
   "name": "aatheme",
   "displayName": "AaTheme",
   "description": "A beautiful glow theme for VS Code with neon-style highlighting and comprehensive language support. See THEME_GUIDE.md for detailed documentation.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "Nahida-aa",
   "license": "MIT",
   "repository": {

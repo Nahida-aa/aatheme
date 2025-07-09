@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ES2022",
+    "outDir": "out/custom",
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "sourceMap": true,
+    "rootDir": "src/custom",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/custom/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "out"
+  ]
+}

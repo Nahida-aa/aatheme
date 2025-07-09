@@ -2,7 +2,7 @@
   "name": "aatheme",
   "displayName": "AaTheme",
   "description": "A beautiful glow theme for VS Code with neon-style highlighting and comprehensive language support. See THEME_GUIDE.md for detailed documentation.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "Nahida-aa",
   "license": "MIT",
   "repository": {
@@ -65,8 +65,8 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
-    "compile": "tsc -p ./ && cp -r src/custom out/",
-    "watch": "cp -r src/custom out/ && tsc -watch -p ./",
+    "compile": "tsc -p ./ && tsc -p tsconfig.custom.json && rsync -a --include='*.css' --include='*/' --exclude='*' src/custom/ out/custom/",
+    "watch": "tsc -watch -p ./ & tsc -watch -p tsconfig.custom.json & rsync -a --include='*.css' --include='*/' --exclude='*' src/custom/ out/custom/",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
     "test": "vscode-test"

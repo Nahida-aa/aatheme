@@ -2,9 +2,10 @@
   "name": "aatheme",
   "displayName": "AaTheme",
   "description": "A beautiful glow theme for VS Code with neon-style highlighting and comprehensive language support. See THEME_GUIDE.md for detailed documentation.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "Nahida-aa",
   "license": "MIT",
+  "icon": "icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/Nahida-aa/aatheme.git"
@@ -69,17 +70,19 @@
     "watch": "tsc -watch -p ./ & tsc -watch -p tsconfig.custom.json & rsync -a --include='*.css' --include='*/' --exclude='*' src/custom/ out/custom/",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "generate-icon": "deno scripts/svg-to-png.ts"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.74.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "sharp": "^0.34.2",
+    "typescript": "^5.8.3"
   }
 }

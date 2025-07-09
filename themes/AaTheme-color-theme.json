@@ -396,7 +396,8 @@
 				// "meta.body.class",
 				"meta.selector entity.name.tag", // css 选择器中的 HTML 标签名
 				"text.html.derivative entity.name.tag", // htmlTag  derivative
-				"source.vue entity.name.tag", // vueTag 名 
+				"entity.name.tag.tsx", // tsxTag
+				"source.vue entity.name.tag", // vueTag 
 				"meta.tag.structure entity.name.tag", // mdTag structure
 				"entity.name.tag.yaml",
 				"entity.name.type", // 命名实体: 类名

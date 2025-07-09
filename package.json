@@ -40,11 +40,11 @@
     "commands": [
       {
         "command": "aatheme.enableGlow",
-        "title": "AaTheme: Enable Glow Dreams"
+        "title": "AaTheme: Enable Glow Effect"
       },
       {
         "command": "aatheme.disableGlow",
-        "title": "AaTheme: Disable Glow Dreams"
+        "title": "AaTheme: Disable Glow Effect"
       }
     ],
     "configuration": {

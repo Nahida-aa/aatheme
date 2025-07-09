@@ -1,5 +1,5 @@
 (function () {
-  console.log('AaTheme: NEON DREAMS 进入脚本');
+  // console.log('AaTheme: GLOW EFFECT 进入脚本');
   //====================================
   // Theme replacement CSS (Glow styles)
   //====================================
@@ -44,31 +44,31 @@
   //=============================
 
   /**
-   * @summary Check if the style element exists and that it has synthwave '84 color content
-   * 检查样式元素是否存在，并且它包含 Synthwave '84 颜色内容
+   * @summary Check if the style element exists and that it has aaTheme color content
+   * 检查样式元素是否存在，并且它包含 aaTheme 颜色内容
    * @param {HTMLElement} tokensEl the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
+   * @param {object} replacements key/value pairs of color hex and the glow styles to replace them with
    * @returns {boolean}
    */
   const themeStylesExist = (tokensEl, replacements) => {
-    console.log('AaTheme: 检查样式是否存在');
+    // console.log('AaTheme: 检查样式是否存在');
     
     if (!tokensEl.innerText) {
-      console.warn('AaTheme: tokensEl.innerText 为空');
+      // console.warn('AaTheme: tokensEl.innerText 为空');
       return false;
     }
     
-    console.log('AaTheme: tokensEl.innerText 长度:', tokensEl.innerText.length);
-    console.log('AaTheme: tokensEl.innerText 完整内容:', tokensEl.innerText);
+    // console.log('AaTheme: tokensEl.innerText 长度:', tokensEl.innerText.length);
+    // console.log('AaTheme: tokensEl.innerText 完整内容:', tokensEl.innerText);
     
     // 提取所有颜色代码
     const colorRegex = /#([a-fA-F0-9]{6})/g;
     const foundColors = tokensEl.innerText.match(colorRegex);
-    console.log('AaTheme: 在原始样式中找到的所有颜色:', foundColors);
+    // console.log('AaTheme: 在原始样式中找到的所有颜色:', foundColors);
     
     // 本文件定义的颜色
     const colors = Object.keys(replacements)
-    console.log('AaTheme: 需要检查的颜色:', colors);
+    // console.log('AaTheme: 需要检查的颜色:', colors);
     
     const missingColors = [];
     const matchedColors = [];
@@ -83,20 +83,20 @@
       }
     }
     
-    console.log('AaTheme: 匹配的颜色:', matchedColors);
-    console.log('AaTheme: 缺失的颜色:', missingColors);
+    // console.log('AaTheme: 匹配的颜色:', matchedColors);
+    // console.log('AaTheme: 缺失的颜色:', missingColors);
     
     const result = tokensEl.innerText !== '' && missingColors.length === 0;
-    console.log('AaTheme: themeStylesExist 结果:', result);
+    // console.log('AaTheme: themeStylesExist 结果:', result);
     
     return result;
   };
 
   /**
-   * @summary Search and replace colours within a CSS definition
+   * @summary Search and replace colors within a CSS definition
    * 搜索并替换 CSS 定义中的颜色
    * @param {string} styles the text content of the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
+   * @param {object} replacements key/value pairs of color hex and the glow styles to replace them with
    * @returns 
    */
   const replaceTokens = (styles, replacements) => Object.keys(replacements).reduce((acc, color) => {
@@ -105,56 +105,56 @@
   }, styles);
 
   /**
-   * @summary Checks if a theme is applied, and that the theme belongs to the Synthwave 84 family
-   * 检查是否应用了主题，并且该主题属于 Synthwave 84 
+   * @summary Checks if a theme is applied, and that the theme belongs to the aaTheme family
+   * 检查是否应用了主题，并且该主题属于 aaTheme 
    * @returns {boolean}
    */
-  const usingSynthwave = () => {
+  const usingAaTheme = () => {
     const appliedTheme = document.querySelector('[class*="theme-json"]');
     const synthWaveTheme = document.querySelector('[class*="Nahida-aa-aatheme-themes"]');
     
-    console.log('AaTheme: appliedTheme 元素:', appliedTheme);
-    console.log('AaTheme: synthWaveTheme 元素:', synthWaveTheme);
+    // console.log('AaTheme: appliedTheme 元素:', appliedTheme);
+    // console.log('AaTheme: synthWaveTheme 元素:', synthWaveTheme);
     
-    if (appliedTheme) {
-      console.log('AaTheme: appliedTheme 类名:', appliedTheme.className);
-    }
+    // if (appliedTheme) {
+    //   console.log('AaTheme: appliedTheme 类名:', appliedTheme.className);
+    // }
     
-    if (synthWaveTheme) {
-      console.log('AaTheme: synthWaveTheme 类名:', synthWaveTheme.className);
-    }
+    // if (synthWaveTheme) {
+    //   console.log('AaTheme: synthWaveTheme 类名:', synthWaveTheme.className);
+    // }
     
     const result = appliedTheme && synthWaveTheme;
-    console.log('AaTheme: usingSynthwave 结果:', result);
+    // console.log('AaTheme: usingAaTheme 结果:', result);
     
     return result;
   }
 
   /**
-   * @summary Checks if the theme is synthwave, and that the styles exist, ready for replacement
+   * @summary Checks if the theme is aaTheme, and that the styles exist, ready for replacement
    * 检查是否满足所有条件来应用发光效果
    * @param {HTMLElement} tokensEl the style tag
-   * @param {object} replacements key/value pairs of colour hex and the glow styles to replace them with
+   * @param {object} replacements key/value pairs of color hex and the glow styles to replace them with
    * @returns 
    */
   const readyForReplacement = (tokensEl, tokenReplacements) => {
-    console.log('AaTheme: 开始检查是否准备就绪');
+    // console.log('AaTheme: 开始检查是否准备就绪');
     
     if (!tokensEl) {
-      console.warn('AaTheme: tokensEl 不存在');
+      // console.warn('AaTheme: tokensEl 不存在');
       return false;
     }
     
-    console.log('AaTheme: tokensEl 存在，检查主题和样式');
+    // console.log('AaTheme: tokensEl 存在，检查主题和样式');
     
-    const isSynthwave = usingSynthwave();
-    console.log('AaTheme: usingSynthwave() 返回:', isSynthwave);
+    const isAaTheme = usingAaTheme();
+    // console.log('AaTheme: usingAaTheme() 返回:', isAaTheme);
     
     const stylesExist = themeStylesExist(tokensEl, tokenReplacements);
-    console.log('AaTheme: themeStylesExist() 返回:', stylesExist);
+    // console.log('AaTheme: themeStylesExist() 返回:', stylesExist);
     
-    const result = isSynthwave && stylesExist;
-    console.log('AaTheme: readyForReplacement 最终结果:', result);
+    const result = isAaTheme && stylesExist;
+    // console.log('AaTheme: readyForReplacement 最终结果:', result);
     
     return result;
   };
@@ -164,13 +164,13 @@
    * @param {boolean} disableGlow 
    * @param {MutationObserver} obs 
    */
-  const initNeonDreams = (disableGlow, obs) => {
-    console.log('AaTheme: NEON DREAMS 开始初始化.');
+  const initGlowEffect = (disableGlow, obs) => {
+    // console.log('AaTheme: GLOW EFFECT 开始初始化.');
     // 1. 获取 VSCode 的原始样式标签
     const tokensEl = document.querySelector('.vscode-tokens-styles');
 
     if (!tokensEl || !readyForReplacement(tokensEl, tokenReplacements)) {
-      console.warn('AaTheme: NEON DREAMS not initialised. Ensure you are using a Synthwave 84 subtheme and that the styles are loaded.');
+      // console.warn('AaTheme: GLOW EFFECT not initialised. Ensure you are using a AaTheme subtheme and that the styles are loaded.');
       return; // 如果没有找到样式标签或不满足条件，则退出
     }
 
@@ -193,7 +193,7 @@
       newStyleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
       document.body.appendChild(newStyleTag);
       
-      console.log('AaTheme: NEON DREAMS initialised!');
+      console.log('AaTheme: GLOW EFFECT initialised!');
     }
 
     // disconnect the observer because we don't need it anymore
@@ -209,15 +209,15 @@
    */
   const watchForBootstrap = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
-      console.log('AaTheme: 迭代 DOM 变化事件.');
+      // console.log('AaTheme: 迭代 DOM 变化事件.');
       if (mutation.type === 'attributes' || mutation.type === 'childList') {
-        console.log('AaTheme: 监听到 DOM 的元素属性变化或子元素变化.');
+        // console.log('AaTheme: 监听到 DOM 的元素属性变化或子元素变化.');
         // does the style div exist yet? // 查找 VS Code 的样式标签 .vscode-tokens-styles 这个标签包含了语法高亮的颜色定义
         const tokensEl = document.querySelector('.vscode-tokens-styles');
-        console.log('AaTheme: 遍历中准备判断是否可以应用发光效果.');
+        // console.log('AaTheme: 遍历中准备判断是否可以应用发光效果.');
         if (readyForReplacement(tokensEl, tokenReplacements)) {
           // If everything we need is ready, then initialise
-          initNeonDreams([DISABLE_GLOW], observer);
+          initGlowEffect([DISABLE_GLOW], observer);
         } else {
           if (tokensEl) {
             // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
@@ -232,7 +232,7 @@
   //=============================
   // Start bootstrapping!
   //=============================
-  console.log('AaTheme: NEON DREAMS 脚本正式运行');
+  // console.log('AaTheme: GLOW EFFECT 脚本正式运行');
   // Grab body node
   const bodyNode = document.querySelector('body');
   // Use a mutation observer to check when we can bootstrap the theme

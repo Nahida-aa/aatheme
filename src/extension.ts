@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const workBenchFilename = vscode.version == "1.94.0" ? "workbench.esm.html" : "workbench.html";
 
 		const htmlFile = path.join(base, electronBase, "workbench", workBenchFilename);
-		const templateFile = path.join(base, electronBase, "workbench", "glowdreams.js");
+		const templateFile = path.join(base, electronBase, "workbench", "aatheme-glow.js");
 
 		try {
 			// const version = context.globalState.get(`${context.extensionName}.version`);
@@ -53,37 +53,37 @@ export function activate(context: vscode.ExtensionContext) {
 			// modify workbench html
 			const html = fs.readFileSync(htmlFile, "utf-8");
 			// check if the tag is already there
-			const isEnabled = html.includes("glowdreams.js");
-			// vscode.window.showInformationMessage("准备检查是否没有 glowdreams.js");
+			const isEnabled = html.includes("aatheme-glow.js");
+			// vscode.window.showInformationMessage("准备检查是否没有 aatheme-glow.js");
 			if (!isEnabled) {
-				// vscode.window.showInformationMessage("当前没有启用 Neon Dreams，正在启用中..., 可以进入下一步");
+				// vscode.window.showInformationMessage("当前没有启用 Glow Effect，正在启用中..., 可以进入下一步");
 				// delete 现有的 script tag if there
-				let output = html.replace(/^.*(<!-- AaTheme --><script src="glowdreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
+				let output = html.replace(/^.*(<!-- AaTheme --><script src="aatheme-glow.js"><\/script><!-- GLOW EFFECT -->).*\n?/mg, '');
 				// add new script tag
-				output = html.replace(/\<\/html\>/g, `	<!-- AaTheme --><script src="glowdreams.js"></script><!-- NEON DREAMS -->\n`);
+				output = html.replace(/\<\/html\>/g, `	<!-- AaTheme --><script src="aatheme-glow.js"></script><!-- GLOW EFFECT -->\n`);
 				output += '</html>';
 	
 				fs.writeFileSync(htmlFile, output, "utf-8");
 				
 				vscode.window
-					.showInformationMessage("Neon Dreams enabled. VS code must reload for this change to take effect. Code may display a warning that it is corrupted, this is normal. You can dismiss this message by choosing 'Don't show this again' on the notification.", { title: "Restart editor to complete" })
+					.showInformationMessage("Glow Effect enabled. VS code must reload for this change to take effect. Code may display a warning that it is corrupted, this is normal. You can dismiss this message by choosing 'Don't show this again' on the notification.", { title: "Restart editor to complete" })
 					.then(function(msg) {
 						vscode.commands.executeCommand("workbench.action.reloadWindow");
 					});
 
 			} else {
 				vscode.window
-					.showInformationMessage('Neon dreams is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
+					.showInformationMessage('Glow effect is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
 					.then(function(msg) {
 						vscode.commands.executeCommand("workbench.action.reloadWindow");
 					});
 			}
 		} catch (e) {
 			if (typeof e === 'object' && e !== null && 'code' in e && typeof (e as any).code === 'string' && /ENOENT|EACCES|EPERM/.test((e as any).code)) {
-				vscode.window.showErrorMessage("Neon Dreams was unable to modify the core VS code files needed to launch the extension. You may need to run VS code with admin privileges in order to enable Neon Dreams.");
+				vscode.window.showErrorMessage("Glow Effect was unable to modify the core VS code files needed to launch the extension. You may need to run VS code with admin privileges in order to enable Glow Effect.");
 				return;
 			} else {
-				vscode.window.showErrorMessage('Something went wrong when starting neon dreams');
+				vscode.window.showErrorMessage('Something went wrong when starting glow effect');
 				return;
 			}
 		}
@@ -110,20 +110,20 @@ function uninstall() {
 	const html = fs.readFileSync(htmlFile, "utf-8");
 
 	// check if the tag is already there
-	const isEnabled = html.includes("glowdreams.js");
+	const isEnabled = html.includes("aatheme-glow.js");
 
 	if (isEnabled) {
-		// delete synthwave script tag if there
-		let output = html.replace(/^.*(<!-- AaTheme --><script src="glowdreams.js"><\/script><!-- NEON DREAMS -->).*\n?/mg, '');
+		// delete aatheme script tag if there
+		let output = html.replace(/^.*(<!-- AaTheme --><script src="aatheme-glow.js"><\/script><!-- GLOW EFFECT -->).*\n?/mg, '');
 		fs.writeFileSync(htmlFile, output, "utf-8");
 
 		vscode.window
-			.showInformationMessage("Neon Dreams disabled. VS code must reload for this change to take effect", { title: "Restart editor to complete" })
+			.showInformationMessage("Glow Effect disabled. VS code must reload for this change to take effect", { title: "Restart editor to complete" })
 			.then(function(msg) {
 				vscode.commands.executeCommand("workbench.action.reloadWindow");
 			});
 	} else {
-		vscode.window.showInformationMessage('Neon dreams isn\'t running.');
+		vscode.window.showInformationMessage('Glow effect isn\'t running.');
 	}
 }
 
